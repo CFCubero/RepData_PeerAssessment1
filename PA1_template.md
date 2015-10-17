@@ -187,8 +187,8 @@ cat("median of the total number of steps taken per day:\n");median_steps
 ## [1] 10766.19
 ```
 
-#New values differs from the calculated on point 2.
-#Number of steps per days is greater than in point 2
+**New values differs from the calculated on point 2.**
+**Number of steps per days is greater than in point 2**
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
