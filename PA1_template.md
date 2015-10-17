@@ -123,11 +123,21 @@ cat("NA imputation\n")
 ```
 
 ```r
+#*In order to solve the problem of NAs, we will sustitute NAs with the mean*
+#*number of steps in a certain interval*
+
+#*To do it, we first calculate the average number of step on each interval*
+
 ave_steps_i<-sapply(split(data,as.factor(data$interval)),function(x) mean(x$steps,na.rm=T))
 ave_steps_i<-data.frame(interval=as.integer(names(ave_steps_i)),num_steps=ave_steps_i)
+
+#*Later we merge this information with the primary information and sustitute the NAs*
+#*with the new values*
+
 data<-merge(data,ave_steps_i,by="interval")
 data[is.na(data$steps),]$steps<-data[is.na(data$steps),]$num_steps
 data$num_steps<-NULL
+
 cat("The number of NAs on each variable is now\n");apply(data,2,function(x) sum(is.na(x)))
 ```
 
